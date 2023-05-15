@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">UNO</string>
+    <string name="UNO_counter">Счетчик UNO</string>
+    <string name="games">Игры</string>
 </resources>

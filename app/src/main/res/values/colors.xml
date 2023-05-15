@@ -7,4 +7,20 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--    custom-->
+                <!--    backgrounds     -->
+    <color name="background_activity">#211D1D</color>
+    <color name="background_button_white">#D7D7D7</color>
+    <color name="background_title_column">#003858</color>
+    <color name="background_score_column">#4B4B4B</color>
+    <color name="background_item_user">#282424</color>
+                <!--    text        -->
+    <color name="text_grey_light">#F8F8F8</color>
+    <color name="text_grey_dark">#B5B5B5</color>
+    <color name="text_black">#211D1D</color>
+                <!--    dash        -->
+    <color name="dash_active">#B5B5B5</color>
+    <color name="dash_disactive">#524D4D</color>
+
 </resources>
