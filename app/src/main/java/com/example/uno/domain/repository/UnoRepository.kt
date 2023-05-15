@@ -1,14 +1,15 @@
 package com.example.uno.domain.repository
 
+import androidx.lifecycle.LiveData
 import com.example.uno.domain.entity.Column
 import com.example.uno.domain.entity.Game
 import com.example.uno.domain.entity.User
 
 interface UnoRepository {
 
-    fun getAllUsersUseCase(): List<User>
+    fun getAllUsersUseCase(): LiveData<List<User>>
 
-    fun getAllGamesUseCase(): List<Game>
+    fun getAllGamesUseCase(): LiveData<List<Game>>
 
     fun getGameUseCase(id: Int): Game
 
