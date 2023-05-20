@@ -12,7 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.uno.R
 import com.example.uno.data.AppDatabase
+import com.example.uno.data.consts.Id
 import com.example.uno.databinding.ActivityMainBinding
+import com.example.uno.domain.entity.Game
 import com.example.uno.presentation.scoreTableActivity.ScoreActivity
 import com.example.uno.presentation.scoreTableActivity.ScoreAdapter
 
@@ -23,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var etTarget: EditText
     private lateinit var btnDone: Button
+    private lateinit var listGames: List<Game>
 
     private lateinit var modalAddGame: Dialog
     private lateinit var database: AppDatabase
@@ -66,8 +69,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initViewModel() {
         database = AppDatabase.getInstance(this)
-        viewModel = ViewModelProvider(this, MainViewModelFactory(database))
-            .get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this, MainViewModelFactory(database))[MainViewModel::class.java]
         observeViewModel()
     }
 
@@ -77,6 +79,7 @@ class MainActivity : AppCompatActivity() {
             Log.d("sasas", "Участники: $it")
         }
         viewModel.getGamesList.observe(this) {
+            listGames = it
             gameAdapter.submitList(it)
             binding.tvCountGames.text = it.size.toString()
             Log.d("sasas", "Установлен список с играми")
@@ -92,10 +95,14 @@ class MainActivity : AppCompatActivity() {
         setupClickListener()
     }
 
+    private fun openGame(id: Int){
+        val intent = ScoreActivity.newIntentScoreActivity(this,id)
+        startActivity(intent)
+    }
+
     private fun setupClickListener() {
         gameAdapter.onGameClickListener = {
-            val intent = ScoreActivity.newIntentScoreActivity(this,it.id)
-            startActivity(intent)
+            openGame(it.id)
         }
     }
 

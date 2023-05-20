@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.uno.R
 import com.example.uno.data.AppDatabase
 import com.example.uno.databinding.ActivityScoreBinding
+import com.example.uno.domain.entity.Column
 import com.example.uno.domain.entity.Game
 
 class ScoreActivity : AppCompatActivity() {
@@ -29,6 +30,10 @@ class ScoreActivity : AppCompatActivity() {
         initViewModel()
         setupRecyclerView()
         initViews()
+        binding.btnAddScoreTyomik.setOnClickListener {
+            val column = Column(1,34,547,234,54)
+            viewModel.addColumn(column)
+        }
     }
 
     private fun initViews(){
