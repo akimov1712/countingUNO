@@ -1,9 +1,9 @@
 package com.example.uno.data
 
-import android.app.Application
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import android.content.Context
+import androidx.room.*
+import com.example.uno.data.converters.ColumnConverter
+import com.example.uno.data.converters.UserConverter
 import com.example.uno.data.dao.ColumnDao
 import com.example.uno.data.dao.GameDao
 import com.example.uno.data.dao.UserDao
@@ -11,7 +11,15 @@ import com.example.uno.domain.entity.Column
 import com.example.uno.domain.entity.Game
 import com.example.uno.domain.entity.User
 
-@Database(entities = [Column::class, Game::class, User::class], version = 1, exportSchema = false)
+@Database(
+    entities = [
+        Game::class,
+        User::class,
+        Column::class],
+    version = 4,
+    exportSchema = false
+)
+@TypeConverters(UserConverter::class, ColumnConverter::class)
 abstract class AppDatabase:RoomDatabase(){
 
     abstract fun columnDao(): ColumnDao
@@ -21,14 +29,17 @@ abstract class AppDatabase:RoomDatabase(){
     companion object{
         private var INSTANCE: AppDatabase? = null
         private val LOCK = Any()
-        private const val DB_NAME = "uno.db"
+        private const val DB_NAME = "unos.db"
 
-        fun getInstance(application: Application):AppDatabase{
+        fun getInstance(context: Context):AppDatabase{
             synchronized(LOCK){
                 INSTANCE?.let {
                     return it
                 }
-                val db = Room.databaseBuilder(application, AppDatabase::class.java, DB_NAME).build()
+                val db = Room.databaseBuilder(context, AppDatabase::class.java, DB_NAME)
+                    .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = db
                 return db
             }

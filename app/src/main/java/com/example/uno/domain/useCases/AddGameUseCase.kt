@@ -1,14 +1,15 @@
 package com.example.uno.domain.useCases
 
+import androidx.lifecycle.LiveData
 import com.example.uno.domain.entity.Game
 import com.example.uno.domain.repository.UnoRepository
 
-class GetGameUseCase(
+class AddGameUseCase (
     private val repository: UnoRepository
 ) {
 
-    operator fun invoke(id: Int): Game {
-       return repository.getGameUseCase(id)
+    operator fun invoke(game: Game) {
+        return repository.addGameUseCase(game)
     }
 
 }

@@ -24,10 +24,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/nunito_regular"
-        android:text="%s игра"
+        android:text="%s"
         android:textSize="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_name_winner" />
+
+    <TextView
+        android:id="@+id/texView_4"
+        style="@style/style_text_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_regular"
+        android:text="игра"
+        android:layout_marginStart="4dp"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_number_of_game"
+        app:layout_constraintStart_toEndOf="@+id/tv_number_of_game"
+        app:layout_constraintTop_toTopOf="@+id/tv_number_of_game" />
 
     <TextView
         android:id="@+id/tv_date"

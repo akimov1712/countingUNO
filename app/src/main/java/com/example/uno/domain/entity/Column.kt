@@ -1,5 +1,6 @@
 package com.example.uno.domain.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -8,10 +9,10 @@ import androidx.room.PrimaryKey
 data class Column(
 
     @PrimaryKey(autoGenerate = true)
-    val numberOfColumn: Int,
-    val scoreTyomik: Int,
-    val scoreMakson: Int,
-    val scoreArtem: Int,
-    val scoreSamurai: Int,
+    @ColumnInfo(name = "id") val id: Int,
+    @ColumnInfo(name = "scoreTyomik") val scoreTyomik: Int,
+    @ColumnInfo(name = "scoreMakson") val scoreMakson: Int,
+    @ColumnInfo(name = "scoreArtem") val scoreArtem: Int,
+    @ColumnInfo(name = "scoreSamurai") val scoreSamurai: Int,
 
-)
+    )

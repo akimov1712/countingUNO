@@ -1,4 +1,4 @@
-package com.example.uno.presentation
+package com.example.uno.presentation.mainActivity
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.uno.domain.entity.User

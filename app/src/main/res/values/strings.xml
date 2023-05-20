@@ -2,4 +2,5 @@
     <string name="app_name">UNO</string>
     <string name="UNO_counter">Счетчик UNO</string>
     <string name="games">Игры</string>
+    <string name="score_table">Таблица очков</string>
 </resources>

@@ -15,6 +15,10 @@
     <color name="background_title_column">#003858</color>
     <color name="background_score_column">#4B4B4B</color>
     <color name="background_item_user">#282424</color>
+    <color name="background_modal_menu">#282424</color>
+    <color name="background_input">#211D1D</color>
+    <color name="background_item_score_blue">#003858</color>
+    <color name="background_item_score_grey">#4B4B4B</color>
                 <!--    text        -->
     <color name="text_grey_light">#F8F8F8</color>
     <color name="text_grey_dark">#B5B5B5</color>

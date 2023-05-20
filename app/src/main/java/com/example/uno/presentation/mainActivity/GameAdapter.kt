@@ -1,4 +1,4 @@
-package com.example.uno.presentation
+package com.example.uno.presentation.mainActivity
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,6 +7,8 @@ import com.example.uno.R
 import com.example.uno.domain.entity.Game
 
 class GameAdapter: ListAdapter<Game, GameViewHolder>(GameItemDiffCallback()) {
+
+    var onGameClickListener: ((Game) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
         val layout = when(viewType){
@@ -21,10 +23,14 @@ class GameAdapter: ListAdapter<Game, GameViewHolder>(GameItemDiffCallback()) {
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
         val gameItem = getItem(position)
         with(holder){
-            tvNameWinner.text = gameItem.winningUser.name
-            tvNumberOfGame.text = gameItem.numberOfGame.toString()
-            tvDate.text = gameItem.date.toString()
-            tvTime.text = gameItem.time.toString()
+            val nameWinner = gameItem.winningUser + " - " + gameItem.maxScore
+            tvNameWinner.text = nameWinner
+            tvNumberOfGame.text = gameItem.id.toString()
+            tvDate.text = gameItem.date
+            tvTime.text = gameItem.time
+            itemView.setOnClickListener {
+                onGameClickListener?.invoke(gameItem)
+            }
         }
     }
 

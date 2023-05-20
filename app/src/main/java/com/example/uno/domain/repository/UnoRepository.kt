@@ -15,4 +15,8 @@ interface UnoRepository {
 
     fun addColumnUseCase(column: Column)
 
+    fun addGameUseCase(game: Game)
+
+    fun addUserUseCase(user: User)
+
 }

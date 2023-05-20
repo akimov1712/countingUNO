@@ -1,4 +1,4 @@
-package com.example.uno.presentation
+package com.example.uno.presentation.mainActivity
 
 import android.view.View
 import android.widget.TextView

@@ -8,7 +8,7 @@ class AddColumnUseCase(
 ) {
 
     operator fun invoke(column: Column){
-        TODO()
+        repository.addColumnUseCase(column)
     }
 
 }

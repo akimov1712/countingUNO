@@ -1,16 +1,15 @@
 package com.example.uno.data
 
-import android.app.Application
-import android.content.Context
 import androidx.lifecycle.LiveData
+import com.example.uno.data.consts.Id
 import com.example.uno.domain.entity.Column
 import com.example.uno.domain.entity.Game
+import com.example.uno.data.consts.Names
 import com.example.uno.domain.entity.User
 import com.example.uno.domain.repository.UnoRepository
 
-class UnoRepositoryImpl(application: Application) : UnoRepository {
+class UnoRepositoryImpl(private val db: AppDatabase) : UnoRepository {
 
-    private val db: AppDatabase = AppDatabase.getInstance(application)
 
     override fun getAllUsersUseCase(): LiveData<List<User>> {
         return db.userDao().getAllUsers()
@@ -27,4 +26,20 @@ class UnoRepositoryImpl(application: Application) : UnoRepository {
     override fun addColumnUseCase(column: Column) {
         db.columnDao().addColumn(column)
     }
+
+    override fun addGameUseCase(game: Game) {
+        db.gameDao().addGame(game)
+    }
+
+    override fun addUserUseCase(user: User) {
+        db.userDao().addUser(user)
+    }
+
+    init {
+        addUserUseCase(User(name = "Тьомик", countOfWins = 0, scoreOfRecord = 0,id = Id.TYOMIK))
+        addUserUseCase(User(name = "Максон", countOfWins = 0, scoreOfRecord = 0,id = Id.MAKSON))
+        addUserUseCase(User(name = "Артем", countOfWins = 0, scoreOfRecord = 0,id = Id.ARTEM))
+        addUserUseCase(User(name = "Самурай", countOfWins = 0, scoreOfRecord = 0,id = Id.SAMURAI))
+    }
+
 }

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="110dp"
+    android:layout_height="230dp"
+    android:layout_marginStart="26dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_number_round"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="4dp"
+        android:layout_weight="1"
+        android:background="@drawable/background_score_item"
+        android:backgroundTint="@color/background_item_score_blue"
+        android:fontFamily="@font/nunito_semibold"
+        android:gravity="center"
+        android:text="1 раунд"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_score_tyomik"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="4dp"
+        android:layout_weight="1"
+        android:background="@drawable/background_score_item"
+        android:backgroundTint="@color/background_item_score_grey"
+        android:fontFamily="@font/nunito_semibold"
+        android:gravity="center"
+        android:text="Тьомик"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_score_makson"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="4dp"
+        android:layout_weight="1"
+        android:background="@drawable/background_score_item"
+        android:backgroundTint="@color/background_item_score_grey"
+        android:fontFamily="@font/nunito_semibold"
+        android:gravity="center"
+        android:text="Максон"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_score_artem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="4dp"
+        android:layout_weight="1"
+        android:background="@drawable/background_score_item"
+        android:backgroundTint="@color/background_item_score_grey"
+        android:fontFamily="@font/nunito_semibold"
+        android:gravity="center"
+        android:text="Артем"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_score_samurai"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="4dp"
+        android:layout_weight="1"
+        android:background="@drawable/background_score_item"
+        android:backgroundTint="@color/background_item_score_grey"
+        android:fontFamily="@font/nunito_semibold"
+        android:gravity="center"
+        android:text="Самурай"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+</LinearLayout>
