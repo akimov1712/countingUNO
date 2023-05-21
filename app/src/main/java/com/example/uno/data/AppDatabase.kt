@@ -1,28 +1,26 @@
 package com.example.uno.data
 
 import android.content.Context
-import androidx.room.*
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.example.uno.data.converters.ColumnConverter
 import com.example.uno.data.converters.UserConverter
-import com.example.uno.data.dao.ColumnDao
 import com.example.uno.data.dao.GameDao
 import com.example.uno.data.dao.UserDao
-import com.example.uno.domain.entity.Column
 import com.example.uno.domain.entity.Game
 import com.example.uno.domain.entity.User
 
 @Database(
     entities = [
         Game::class,
-        User::class,
-        Column::class],
-    version = 4,
+        User::class,],
+    version = 6,
     exportSchema = false
 )
 @TypeConverters(UserConverter::class, ColumnConverter::class)
 abstract class AppDatabase:RoomDatabase(){
-
-    abstract fun columnDao(): ColumnDao
     abstract fun gameDao(): GameDao
     abstract fun userDao(): UserDao
 

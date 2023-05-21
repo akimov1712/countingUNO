@@ -9,6 +9,7 @@ class AddUserUseCase(
 
     operator fun invoke(user: User){
         return repository.addUserUseCase(user)
+
     }
 
 }

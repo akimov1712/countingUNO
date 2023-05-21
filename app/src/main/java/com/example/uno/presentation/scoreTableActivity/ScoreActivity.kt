@@ -3,12 +3,14 @@ package com.example.uno.presentation.scoreTableActivity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.uno.R
 import com.example.uno.data.AppDatabase
 import com.example.uno.databinding.ActivityScoreBinding
+import com.example.uno.domain.entity.Column
 import com.example.uno.domain.entity.Game
 
 class ScoreActivity : AppCompatActivity() {
@@ -29,12 +31,20 @@ class ScoreActivity : AppCompatActivity() {
         initViewModel()
         setupRecyclerView()
         initViews()
+        Log.d("ScoreActivity", "gameItem3: $gameItem")
     }
 
     private fun initViews(){
         binding.tvNumberOfGame.text = "№ $gameId"
         binding.btnCloseActivity.setOnClickListener{
             finish()
+        }
+        binding.btnAddScoreTyomik.setOnClickListener {
+            val score = arrayListOf(24,74,35,2)
+            val column = Column(1,score)
+            gameItem?.let {
+                viewModel.addColumn(it, column)
+            }
         }
     }
 
@@ -43,21 +53,19 @@ class ScoreActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, ScoreViewModelFactory(database))[ScoreViewModel::class.java]
         observeViewModel()
         viewModel.getGame(gameId)
-        gameItem?.let {
-            viewModel.getGameColumn(it)
-        }
     }
 
     private fun observeViewModel(){
         viewModel.shouldCloseActivity.observe(this){
             finish()
         }
-        viewModel.gameColumn.observe(this){
-            scoreAdapter.submitList(it)
-        }
         viewModel.gameItem.observe(this){
             gameItem = it
             binding.tvTarget.text = it.targetOfScore.toString()
+            scoreAdapter.submitList(it.listColumns.reversed())
+            binding.rvScore.post {
+                binding.rvScore.smoothScrollToPosition(it.listColumns.size - 1)
+            }
         }
     }
 

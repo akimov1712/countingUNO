@@ -10,6 +10,7 @@ class GetAllGamesUseCase(
 
     operator fun invoke(): LiveData<List<Game>>{
         return repository.getAllGamesUseCase()
+
     }
 
 }

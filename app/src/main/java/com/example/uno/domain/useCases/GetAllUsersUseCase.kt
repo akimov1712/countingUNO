@@ -10,6 +10,7 @@ class GetAllUsersUseCase(
 
     operator fun invoke(): LiveData<List<User>>{
         return repository.getAllUsersUseCase()
+
     }
 
 }

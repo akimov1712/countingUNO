@@ -11,12 +11,13 @@ interface UnoRepository {
 
     fun getAllGamesUseCase(): LiveData<List<Game>>
 
-    fun getGameUseCase(id: Int): Game
+     fun getGameUseCase(id: Int): Game
 
-    fun addColumnUseCase(column: Column)
+     fun addColumnUseCase(game: Game,column: Column)
 
-    fun addGameUseCase(game: Game)
+     fun addGameUseCase(game: Game)
 
     fun addUserUseCase(user: User)
+
 
 }

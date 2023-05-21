@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.uno.R
+import com.example.uno.data.consts.Id
 import com.example.uno.domain.entity.Column
 
 class ScoreAdapter: ListAdapter<Column,ScoreViewHolder>(ScoreItemDiffCallback()) {
@@ -17,10 +18,10 @@ class ScoreAdapter: ListAdapter<Column,ScoreViewHolder>(ScoreItemDiffCallback())
         val scoreItem = getItem(position)
         with(holder){
             tvNumberRound.text = "Раунд ${scoreItem.id}"
-            tvScoreTyomik.text = scoreItem.scoreTyomik.toString()
-            tvScoreMakson.text = scoreItem.scoreMakson.toString()
-            tvScoreArtem.text = scoreItem.scoreArtem.toString()
-            tvScoreSamurai.text = scoreItem.scoreSamurai.toString()
+            tvScoreTyomik.text = scoreItem.scoreList[Id.TYOMIK].toString()
+            tvScoreMakson.text = scoreItem.scoreList[Id.MAKSON].toString()
+            tvScoreArtem.text = scoreItem.scoreList[Id.ARTEM].toString()
+            tvScoreSamurai.text = scoreItem.scoreList[Id.SAMURAI].toString()
         }
     }
 }

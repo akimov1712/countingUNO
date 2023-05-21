@@ -7,8 +7,9 @@ class GetGameUseCase(
     private val repository: UnoRepository
 ) {
 
-    operator fun invoke(id: Int): Game {
+     operator fun invoke(id: Int): Game {
        return repository.getGameUseCase(id)
+
     }
 
 }

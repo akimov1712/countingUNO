@@ -1,5 +1,6 @@
 package com.example.uno.presentation.mainActivity
 
+import MainViewModel
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -14,7 +15,6 @@ import com.example.uno.R
 import com.example.uno.data.AppDatabase
 import com.example.uno.databinding.ActivityMainBinding
 import com.example.uno.presentation.scoreTableActivity.ScoreActivity
-import com.example.uno.presentation.scoreTableActivity.ScoreAdapter
 
 
 class MainActivity : AppCompatActivity() {
@@ -58,27 +58,33 @@ class MainActivity : AppCompatActivity() {
 
     private fun listenerCreateGame() {
         btnDone.setOnClickListener {
-            val target = etTarget.text.toString()
-            etTarget.text = null
-            viewModel.addCreateGame(target)
+            createGame()
         }
+    }
+
+    private fun createGame() {
+        val target = etTarget.text.toString()
+        etTarget.text = null
+        viewModel.addCreateGame(target)
     }
 
     private fun initViewModel() {
         database = AppDatabase.getInstance(this)
-        viewModel = ViewModelProvider(this, MainViewModelFactory(database))
-            .get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this, MainViewModelFactory(database))[MainViewModel::class.java]
         observeViewModel()
     }
 
     private fun observeViewModel() {
-        viewModel.getUsersList.observe(this) {
+        viewModel.usersList.observe(this) {
             userAdapter.submitList(it)
             Log.d("sasas", "Участники: $it")
         }
-        viewModel.getGamesList.observe(this) {
+        viewModel.gamesList.observe(this) {
             gameAdapter.submitList(it)
             binding.tvCountGames.text = it.size.toString()
+            binding.rvGames.post {
+                binding.rvGames.smoothScrollToPosition(0)
+            }
             Log.d("sasas", "Установлен список с играми")
         }
         viewModel.shouldCloseModal.observe(this) {
