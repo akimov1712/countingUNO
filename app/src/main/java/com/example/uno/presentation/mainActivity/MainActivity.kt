@@ -14,12 +14,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.uno.R
 import com.example.uno.data.AppDatabase
 import com.example.uno.databinding.ActivityMainBinding
+import com.example.uno.presentation.scoreTableActivity.ModalDeleteColumn
 import com.example.uno.presentation.scoreTableActivity.ScoreActivity
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var modalDeleteColumn: ModalDeleteColumn
 
     private lateinit var etTarget: EditText
     private lateinit var btnDone: Button
@@ -34,9 +36,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        modalDeleteColumn = ModalDeleteColumn()
         initModalCreateGame()
         setupRecyclerView()
         initViewModel()
+        modalDeleteColumn.createLayout(this,layoutInflater)
 
     }
 
@@ -77,7 +81,6 @@ class MainActivity : AppCompatActivity() {
     private fun observeViewModel() {
         viewModel.usersList.observe(this) {
             userAdapter.submitList(it)
-            Log.d("sasas", "Участники: $it")
         }
         viewModel.gamesList.observe(this) {
             gameAdapter.submitList(it)
@@ -85,7 +88,9 @@ class MainActivity : AppCompatActivity() {
             binding.rvGames.post {
                 binding.rvGames.smoothScrollToPosition(0)
             }
-            Log.d("sasas", "Установлен список с играми")
+            for (item in it){
+                Log.d("sis", item.toString())
+            }
         }
         viewModel.shouldCloseModal.observe(this) {
             modalAddGame.dismiss();

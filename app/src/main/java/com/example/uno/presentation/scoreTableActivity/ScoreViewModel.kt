@@ -21,15 +21,17 @@ class ScoreViewModel(database: AppDatabase): ViewModel() {
     val gameItem: LiveData<Game>
         get() = _gameItem
 
-    fun addColumn(game: Game, column: Column) {
-        addColumnUseCase.invoke(game, column)
-        getGame(game.id)
-    }
+
+    private val _finishGame = MutableLiveData<Any>()
+    val finishGame: LiveData<Any>
+        get() = _finishGame
 
     fun getGame(id: Int) {
         val gameItem = getGameUseCase.invoke(id)
+        if (gameItem.gameFinish) {
+            _finishGame.value = Any()
+        }
         _gameItem.value = gameItem
-
     }
 
     private val _shouldCloseActivity = MutableLiveData<Unit>()

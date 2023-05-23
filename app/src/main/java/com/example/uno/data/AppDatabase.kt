@@ -16,7 +16,7 @@ import com.example.uno.domain.entity.User
     entities = [
         Game::class,
         User::class,],
-    version = 6,
+    version = 7,
     exportSchema = false
 )
 @TypeConverters(UserConverter::class, ColumnConverter::class)

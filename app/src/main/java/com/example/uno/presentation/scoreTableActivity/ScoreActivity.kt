@@ -3,6 +3,7 @@ package com.example.uno.presentation.scoreTableActivity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -76,6 +77,14 @@ class ScoreActivity : AppCompatActivity() {
         viewModel.shouldCloseActivity.observe(this) {
             finish()
         }
+        viewModel.finishGame.observe(this){
+            binding.apply {
+                btnAddScoreTyomik.setOnClickListener { toastFinishError() }
+                btnAddScoreMakson.setOnClickListener { toastFinishError() }
+                btnAddScoreArtem.setOnClickListener { toastFinishError() }
+                btnAddScoreSamurai.setOnClickListener { toastFinishError() }
+            }
+        }
         viewModel.gameItem.observe(this){
             gameItem = it
             binding.tvTarget.text = it.targetOfScore.toString()
@@ -100,6 +109,10 @@ class ScoreActivity : AppCompatActivity() {
         with(rvScore) {
             adapter = scoreAdapter
         }
+    }
+
+    private fun toastFinishError(){
+        Toast.makeText(this@ScoreActivity, "Игра окончена", Toast.LENGTH_SHORT).show()
     }
 
     companion object{
