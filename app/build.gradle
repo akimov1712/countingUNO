@@ -45,12 +45,13 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.room:room-runtime:2.5.0' // Библиотека "Room"
-    kapt "androidx.room:room-compiler:2.5.0" // Кодогенератор
+    implementation 'androidx.room:room-runtime:2.5.0'
+    kapt "androidx.room:room-compiler:2.5.0"
     implementation 'androidx.room:room-ktx:2.5.0'
     implementation 'com.google.code.gson:gson:2.8.9'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'

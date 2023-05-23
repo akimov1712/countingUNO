@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.uno.data.consts.Names
+import java.io.Serializable
 
 @Entity(tableName = "game")
 data class Game(
@@ -17,4 +18,8 @@ data class Game(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id") val id: Int = 0
 
-)
+): Serializable {
+
+
+
+}

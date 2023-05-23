@@ -1,7 +1,7 @@
 package com.example.uno.data.consts
 
 class Names {
-    companion object{
+    companion object {
         const val TYOMIK = "Тьомик"
         const val MAKSON = "Максон"
         const val ARTEM = "Артем"

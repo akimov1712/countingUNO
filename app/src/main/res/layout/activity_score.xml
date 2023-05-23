@@ -134,7 +134,7 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="110dp"
-        android:layout_height="230dp"
+        android:layout_height="200dp"
         android:layout_marginVertical="20dp"
         android:layout_marginStart="20dp"
         android:orientation="vertical"
@@ -200,7 +200,7 @@
             android:backgroundTint="@color/background_item_score_blue"
             android:fontFamily="@font/nunito_semibold"
             android:gravity="center"
-            android:text="Самурай"
+            android:text="@string/kaka_pisya"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
@@ -210,7 +210,10 @@
         android:id="@+id/rv_score"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:overScrollMode="never"
         android:orientation="horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="24dp"
         tools:listitem="@layout/item_score"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"

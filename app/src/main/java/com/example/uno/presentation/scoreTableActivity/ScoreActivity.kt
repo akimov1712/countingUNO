@@ -3,15 +3,15 @@ package com.example.uno.presentation.scoreTableActivity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.uno.R
 import com.example.uno.data.AppDatabase
+import com.example.uno.data.consts.Names
 import com.example.uno.databinding.ActivityScoreBinding
-import com.example.uno.domain.entity.Column
 import com.example.uno.domain.entity.Game
+import com.example.uno.presentation.addActivity.AddActivity
 
 class ScoreActivity : AppCompatActivity() {
 
@@ -31,20 +31,37 @@ class ScoreActivity : AppCompatActivity() {
         initViewModel()
         setupRecyclerView()
         initViews()
-        Log.d("ScoreActivity", "gameItem3: $gameItem")
     }
 
-    private fun initViews(){
+    override fun onResume() {
+        super.onResume()
+        viewModel.getGame(gameId)
+    }
+
+    private fun initViews() {
         binding.tvNumberOfGame.text = "№ $gameId"
-        binding.btnCloseActivity.setOnClickListener{
+        binding.btnCloseActivity.setOnClickListener {
             finish()
         }
+        initButtonsAddScore()
+    }
+
+    private fun initButtonsAddScore() {
         binding.btnAddScoreTyomik.setOnClickListener {
-            val score = arrayListOf(24,74,35,2)
-            val column = Column(1,score)
-            gameItem?.let {
-                viewModel.addColumn(it, column)
-            }
+            val intent = AddActivity.newIntentAddActivity(this, gameId, Names.TYOMIK)
+            startActivity(intent)
+        }
+        binding.btnAddScoreMakson.setOnClickListener {
+            val intent = AddActivity.newIntentAddActivity(this, gameId, Names.MAKSON)
+            startActivity(intent)
+        }
+        binding.btnAddScoreArtem.setOnClickListener {
+            val intent = AddActivity.newIntentAddActivity(this, gameId, Names.ARTEM)
+            startActivity(intent)
+        }
+        binding.btnAddScoreSamurai.setOnClickListener {
+            val intent = AddActivity.newIntentAddActivity(this, gameId, Names.SAMURAI)
+            startActivity(intent)
         }
     }
 
@@ -55,23 +72,25 @@ class ScoreActivity : AppCompatActivity() {
         viewModel.getGame(gameId)
     }
 
-    private fun observeViewModel(){
-        viewModel.shouldCloseActivity.observe(this){
+    private fun observeViewModel() {
+        viewModel.shouldCloseActivity.observe(this) {
             finish()
         }
         viewModel.gameItem.observe(this){
             gameItem = it
             binding.tvTarget.text = it.targetOfScore.toString()
-            scoreAdapter.submitList(it.listColumns.reversed())
+            scoreAdapter.submitList(it.listColumns)
             binding.rvScore.post {
-                binding.rvScore.smoothScrollToPosition(it.listColumns.size - 1)
+                if (it.listColumns.size != 0) {
+                    binding.rvScore.smoothScrollToPosition(it.listColumns.size - 1)
+                }
             }
         }
     }
 
     private fun parseIntent(){
         val intent = intent
-        val id = intent.getIntExtra(KEY_ID, UNDEFINED_ID)
+        val id = intent.getIntExtra(KEY_ID, 99)
         gameId = id
     }
 
