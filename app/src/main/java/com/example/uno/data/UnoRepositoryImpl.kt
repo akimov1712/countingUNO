@@ -40,11 +40,17 @@ class UnoRepositoryImpl(private val db: AppDatabase) : UnoRepository {
         db.userDao().addUser(user)
     }
 
+    override fun updateUserUseCase(user: User) {
+        db.userDao().updateUser(user)
+    }
+
     init {
-        addUserUseCase(User(name = "Тьомик", countOfWins = 0, scoreOfRecord = 0, id = 1))
-        addUserUseCase(User(name = "Максон", countOfWins = 0, scoreOfRecord = 0,id = 2))
-        addUserUseCase(User(name = "Артем", countOfWins = 0, scoreOfRecord = 0,id = 3))
-        addUserUseCase(User(name = "Самурай", countOfWins = 0, scoreOfRecord = 0,id = 4))
+        if (getAllUsersUseCase().value == null){
+            addUserUseCase(User(name = "Тьомик", countOfWins = 0, scoreOfRecord = 0, id = 1))
+            addUserUseCase(User(name = "Максон", countOfWins = 0, scoreOfRecord = 0,id = 2))
+            addUserUseCase(User(name = "Артем", countOfWins = 0, scoreOfRecord = 0,id = 3))
+            addUserUseCase(User(name = "Самурай", countOfWins = 0, scoreOfRecord = 0,id = 4))
+        }
     }
 
 }

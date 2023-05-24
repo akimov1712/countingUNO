@@ -1,9 +1,11 @@
 package com.example.uno.presentation.scoreTableActivity
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -11,13 +13,19 @@ import com.example.uno.R
 import com.example.uno.data.AppDatabase
 import com.example.uno.data.consts.Names
 import com.example.uno.databinding.ActivityScoreBinding
+import com.example.uno.databinding.ModalDeleteColumnBinding
+import com.example.uno.domain.entity.Column
 import com.example.uno.domain.entity.Game
 import com.example.uno.presentation.addActivity.AddActivity
+import com.example.uno.presentation.toasts.ToastFinishGame
 
 class ScoreActivity : AppCompatActivity() {
 
     private var gameId = UNDEFINED_ID
     private var gameItem: Game? = null
+
+    private lateinit var modalDeleteColumn: Dialog
+    private lateinit var bindingModalDeleteColumn: ModalDeleteColumnBinding
 
     private lateinit var database: AppDatabase
     private lateinit var viewModel: ScoreViewModel
@@ -32,11 +40,29 @@ class ScoreActivity : AppCompatActivity() {
         initViewModel()
         setupRecyclerView()
         initViews()
+        createModalDeleteColumn()
     }
 
     override fun onResume() {
         super.onResume()
         viewModel.getGame(gameId)
+    }
+
+    private fun createModalDeleteColumn(){
+
+        modalDeleteColumn = Dialog(this)
+        bindingModalDeleteColumn = ModalDeleteColumnBinding.inflate(layoutInflater)
+        modalDeleteColumn.setContentView(bindingModalDeleteColumn.root)
+
+    }
+
+    private fun initListenersModalDeleteColumn(column: Column){
+        bindingModalDeleteColumn.btnDelete.setOnClickListener {
+
+        }
+        bindingModalDeleteColumn.btnCancel.setOnClickListener {
+            modalDeleteColumn.dismiss()
+        }
     }
 
     private fun initViews() {
@@ -78,11 +104,12 @@ class ScoreActivity : AppCompatActivity() {
             finish()
         }
         viewModel.finishGame.observe(this){
+            ToastFinishGame.toastFinishGame(this)
             binding.apply {
-                btnAddScoreTyomik.setOnClickListener { toastFinishError() }
-                btnAddScoreMakson.setOnClickListener { toastFinishError() }
-                btnAddScoreArtem.setOnClickListener { toastFinishError() }
-                btnAddScoreSamurai.setOnClickListener { toastFinishError() }
+                btnAddScoreTyomik.setOnClickListener { ToastFinishGame.toastFinishGame(this@ScoreActivity) }
+                btnAddScoreMakson.setOnClickListener { ToastFinishGame.toastFinishGame(this@ScoreActivity) }
+                btnAddScoreArtem.setOnClickListener { ToastFinishGame.toastFinishGame(this@ScoreActivity) }
+                btnAddScoreSamurai.setOnClickListener { ToastFinishGame.toastFinishGame(this@ScoreActivity) }
             }
         }
         viewModel.gameItem.observe(this){
@@ -106,13 +133,13 @@ class ScoreActivity : AppCompatActivity() {
     private fun setupRecyclerView(){
         val rvScore = findViewById<RecyclerView>(R.id.rv_score)
         scoreAdapter = ScoreAdapter()
+        scoreAdapter.onColumnClickListener = {
+            modalDeleteColumn.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            modalDeleteColumn.show()
+        }
         with(rvScore) {
             adapter = scoreAdapter
         }
-    }
-
-    private fun toastFinishError(){
-        Toast.makeText(this@ScoreActivity, "Игра окончена", Toast.LENGTH_SHORT).show()
     }
 
     companion object{

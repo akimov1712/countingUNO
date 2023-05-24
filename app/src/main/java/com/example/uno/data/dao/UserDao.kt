@@ -1,12 +1,8 @@
 package com.example.uno.data.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.uno.domain.entity.User
-
 
 @Dao
 interface UserDao {
@@ -14,10 +10,13 @@ interface UserDao {
     @Query("SELECT * FROM user")
     fun getAllUsers(): LiveData<List<User>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun addUser(user: User)
 
+    @Update
+    fun updateUser(user: User)
+
     @Query("DELETE FROM user")
-    fun geleteAllUsers()
+    fun deleteAllUsers()
 
 }

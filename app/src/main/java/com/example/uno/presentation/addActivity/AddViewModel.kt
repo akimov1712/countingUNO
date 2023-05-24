@@ -9,8 +9,11 @@ import com.example.uno.data.consts.Id
 import com.example.uno.data.consts.Names
 import com.example.uno.domain.entity.Column
 import com.example.uno.domain.entity.Game
+import com.example.uno.domain.entity.User
 import com.example.uno.domain.useCases.AddColumnUseCase
+import com.example.uno.domain.useCases.GetAllUsersUseCase
 import com.example.uno.domain.useCases.GetGameUseCase
+import com.example.uno.domain.useCases.UpdateUserUseCase
 
 class AddViewModel(database: AppDatabase) : ViewModel() {
 
@@ -18,14 +21,14 @@ class AddViewModel(database: AppDatabase) : ViewModel() {
 
     private val getGameUseCase = GetGameUseCase(repository)
     private val addColumnUseCase = AddColumnUseCase(repository)
+    private val getAllUsersUseCase = GetAllUsersUseCase(repository)
+    private val updateUserUseCase = UpdateUserUseCase(repository)
 
     private val _gameItem = MutableLiveData<Game>()
     val gameItem: LiveData<Game>
         get() = _gameItem
 
-    private val _finishGame = MutableLiveData<Any>()
-    val finishGame: LiveData<Any>
-        get() = _finishGame
+    val usersList = getAllUsersUseCase.invoke()
 
     fun addColumn(game: Game, column: Column) {
         editValuesGame(column, game)
@@ -34,17 +37,57 @@ class AddViewModel(database: AppDatabase) : ViewModel() {
     }
 
     private fun editValuesGame(column: Column, game: Game) {
+        val users = usersList.value!!
         val maxScoreInList = column.scoreList.maxOrNull() ?: return
         game.maxScore = maxScoreInList
-        game.winningUser = when (maxScoreInList) {
-            column.scoreList[Id.TYOMIK] -> Names.TYOMIK
-            column.scoreList[Id.MAKSON] -> Names.MAKSON
-            column.scoreList[Id.ARTEM] -> Names.ARTEM
-            column.scoreList[Id.SAMURAI] -> Names.SAMURAI
-            else -> return
+        if (setupWinningUser(game, maxScoreInList, column)) return
+        setupCountWins(maxScoreInList, game, users)
+    }
+
+     fun setupScoreOfRecord(id: Int, score: Int){
+        val users = usersList.value!!
+        if (score > users[id].scoreOfRecord) {
+            val user = users[id]
+            user.scoreOfRecord = score
+            updateUserUseCase(user)
         }
-        if (maxScoreInList > game.targetOfScore) {
+    }
+
+    private fun setupWinningUser(
+        game: Game,
+        maxScoreInList: Int,
+        column: Column
+    ): Boolean {
+        game.winningUser = when (maxScoreInList) {
+            column.scoreList[Id.TYOMIK] -> {
+                Names.TYOMIK
+            }
+            column.scoreList[Id.MAKSON] -> {
+                Names.MAKSON
+            }
+            column.scoreList[Id.ARTEM] -> {
+                Names.ARTEM
+            }
+            column.scoreList[Id.SAMURAI] -> {
+                Names.SAMURAI
+            }
+            else -> return true
+        }
+        return false
+    }
+
+    private fun setupCountWins(
+        maxScoreInList: Int,
+        game: Game,
+        users: List<User>
+    ) {
+        if (maxScoreInList >= game.targetOfScore) {
             game.gameFinish = true
+            val winningUser = users.find { it.name == game.winningUser } ?: return
+            winningUser.apply {
+                countOfWins++
+            }
+            updateUserUseCase(winningUser)
         }
     }
 

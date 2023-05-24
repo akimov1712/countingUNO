@@ -16,7 +16,7 @@ import com.example.uno.domain.entity.User
     entities = [
         Game::class,
         User::class,],
-    version = 7,
+    version = 4,
     exportSchema = false
 )
 @TypeConverters(UserConverter::class, ColumnConverter::class)
@@ -27,7 +27,7 @@ abstract class AppDatabase:RoomDatabase(){
     companion object{
         private var INSTANCE: AppDatabase? = null
         private val LOCK = Any()
-        private const val DB_NAME = "unos.db"
+        private const val DB_NAME = "uno.db"
 
         fun getInstance(context: Context):AppDatabase{
             synchronized(LOCK){
@@ -42,7 +42,5 @@ abstract class AppDatabase:RoomDatabase(){
                 return db
             }
         }
-
     }
-
 }

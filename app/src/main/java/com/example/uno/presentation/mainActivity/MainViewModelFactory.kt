@@ -1,6 +1,5 @@
 package com.example.uno.presentation.mainActivity
 
-import MainViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.uno.data.AppDatabase

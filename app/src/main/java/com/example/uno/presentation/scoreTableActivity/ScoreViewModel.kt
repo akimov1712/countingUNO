@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.uno.data.AppDatabase
 import com.example.uno.data.UnoRepositoryImpl
-import com.example.uno.domain.entity.Column
 import com.example.uno.domain.entity.Game
+import com.example.uno.domain.entity.User
 import com.example.uno.domain.useCases.AddColumnUseCase
 import com.example.uno.domain.useCases.GetGameUseCase
 
@@ -21,6 +21,9 @@ class ScoreViewModel(database: AppDatabase): ViewModel() {
     val gameItem: LiveData<Game>
         get() = _gameItem
 
+    private val _getUsers = MutableLiveData<List<User>>()
+    val getUsers: LiveData<List<User>>
+        get() = _getUsers
 
     private val _finishGame = MutableLiveData<Any>()
     val finishGame: LiveData<Any>

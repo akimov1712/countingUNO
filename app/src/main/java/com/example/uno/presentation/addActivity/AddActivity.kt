@@ -3,6 +3,7 @@ package com.example.uno.presentation.addActivity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -191,7 +192,7 @@ class AddActivity : AppCompatActivity() {
                 setOnLongClickListener {
                     var countScore = binding.tvCountScore.text.toString().toInt()
                     if (countScore > 9) {
-                        countScore -= 10
+                        countScore -= 20
                         binding.tvCountScore.text = countScore.toString()
                     }
                     true
@@ -277,24 +278,28 @@ class AddActivity : AppCompatActivity() {
                 Names.TYOMIK -> {
                     val newList = listScores.toMutableList()
                     val newValue = newList[Id.TYOMIK]
+                    viewModel.setupScoreOfRecord(Id.TYOMIK,score)
                     newList[Id.TYOMIK] = score + newValue
                     return newList
                 }
                 Names.MAKSON -> {
                     val newList = listScores.toMutableList()
                     val newValue = newList[Id.MAKSON]
+                    viewModel.setupScoreOfRecord(Id.MAKSON,score)
                     newList[Id.MAKSON] = score + newValue
                     return newList
                 }
                 Names.ARTEM -> {
                     val newList = listScores.toMutableList()
                     val newValue = newList[Id.ARTEM]
+                    viewModel.setupScoreOfRecord(Id.ARTEM,score)
                     newList[Id.ARTEM] = score + newValue
                     return newList
                 }
                 Names.SAMURAI -> {
                     val newList = listScores.toMutableList()
                     val newValue = newList[Id.SAMURAI]
+                    viewModel.setupScoreOfRecord(Id.SAMURAI,score)
                     newList[Id.SAMURAI] = score + newValue
                     return newList
                 }
@@ -331,16 +336,15 @@ class AddActivity : AppCompatActivity() {
             viewModel.getGame(gameId)
         }
 
-        private fun toastFinishError(){
-            Toast.makeText(this@AddActivity, "Игра окончена", Toast.LENGTH_SHORT).show()
-        }
 
         private fun observeViewModel() {
             viewModel.gameItem.observe(this) {
                 gameItem = it
             }
-            viewModel.finishGame.observe(this){
-                toastFinishError()
+            viewModel.usersList.observe(this){
+                for (item in it){
+                    Log.d("users", item.toString())
+                }
             }
         }
 

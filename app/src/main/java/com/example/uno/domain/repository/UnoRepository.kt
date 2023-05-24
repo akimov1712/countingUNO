@@ -19,5 +19,7 @@ interface UnoRepository {
 
     fun addUserUseCase(user: User)
 
+    fun updateUserUseCase(user: User)
+
 
 }

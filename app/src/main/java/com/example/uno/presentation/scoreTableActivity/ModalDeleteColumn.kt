@@ -8,20 +8,23 @@ import com.example.uno.databinding.ModalDeleteColumnBinding
 
 class ModalDeleteColumn() {
 
-    private lateinit var modalDeleteColumn: Dialog
-    private lateinit var binding: ModalDeleteColumnBinding
+     val setOnDeleteClickListener: ((Unit) -> Unit)? = null
 
-    fun createLayout(context: Context, layoutInflater: LayoutInflater): Dialog {
-        modalDeleteColumn = Dialog(context);
-        binding = ModalDeleteColumnBinding.inflate(layoutInflater)
-        modalDeleteColumn.setContentView(binding.root);
-        btnDelete = binding.btnDelete
-        btnCancel = binding.btnCancel
-        return modalDeleteColumn
-    }
+    companion object{
 
-    companion object {
+        private lateinit var modalDeleteColumn: Dialog
+        private lateinit var binding: ModalDeleteColumnBinding
         lateinit var btnCancel: Button
         lateinit var btnDelete: Button
+
+        fun createLayout(context: Context, layoutInflater: LayoutInflater): Dialog {
+            modalDeleteColumn = Dialog(context);
+            binding = ModalDeleteColumnBinding.inflate(layoutInflater)
+            modalDeleteColumn.setContentView(binding.root);
+            btnDelete = binding.btnDelete
+            btnCancel = binding.btnCancel
+            return modalDeleteColumn
+        }
     }
+
 }

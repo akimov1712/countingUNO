@@ -10,7 +10,7 @@
 
     <!--    custom-->
                 <!--    backgrounds     -->
-    <color name="background_activity">#211D1D</color>
+    <color name="background_activity">#121010</color>
     <color name="background_button_white">#D7D7D7</color>
     <color name="background_title_column">#003858</color>
     <color name="background_score_column">#4B4B4B</color>

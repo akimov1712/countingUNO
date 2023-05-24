@@ -12,6 +12,7 @@ class GameAdapter: ListAdapter<Game, GameViewHolder>(GameItemDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
         val layout = when(viewType){
+            VIEW_TYPE_FINISH -> R.layout.item_game_finish
             VIEW_TYPE_ACTIVE -> R.layout.item_game_active
             VIEW_TYPE_DISACTIVE -> R.layout.item_game_disactive
             else -> throw RuntimeException("viewType not found: $viewType")
@@ -23,7 +24,11 @@ class GameAdapter: ListAdapter<Game, GameViewHolder>(GameItemDiffCallback()) {
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
         val gameItem = getItem(position)
         with(holder){
-            val nameWinner = gameItem.winningUser + " - " + gameItem.maxScore
+            val nameWinner = if (gameItem.gameFinish){
+                "Победитель " + gameItem.winningUser
+            } else{
+                gameItem.winningUser + " - " + gameItem.maxScore
+            }
             tvNameWinner.text = nameWinner
             tvNumberOfGame.text = gameItem.id.toString()
             tvDate.text = gameItem.date
@@ -36,7 +41,9 @@ class GameAdapter: ListAdapter<Game, GameViewHolder>(GameItemDiffCallback()) {
 
     override fun getItemViewType(position: Int): Int {
         val item = getItem(position)
-        return if (item.id == itemCount){
+        return if(item.gameFinish){
+            VIEW_TYPE_FINISH
+        } else if (item.id == itemCount){
             VIEW_TYPE_ACTIVE
         } else{
             VIEW_TYPE_DISACTIVE
@@ -46,6 +53,7 @@ class GameAdapter: ListAdapter<Game, GameViewHolder>(GameItemDiffCallback()) {
     companion object{
         const val VIEW_TYPE_ACTIVE = 1
         const val VIEW_TYPE_DISACTIVE = 0
+        const val VIEW_TYPE_FINISH = -1
         const val MAX_POOL_SIZE = 0
 
     }

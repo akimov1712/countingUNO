@@ -1,3 +1,4 @@
+package com.example.uno.presentation.mainActivity
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.uno.data.AppDatabase
 import com.example.uno.data.UnoRepositoryImpl
 import com.example.uno.domain.entity.Game
+import com.example.uno.domain.entity.User
 import com.example.uno.domain.useCases.AddGameUseCase
+import com.example.uno.domain.useCases.AddUserUseCase
 import com.example.uno.domain.useCases.GetAllGamesUseCase
 import com.example.uno.domain.useCases.GetAllUsersUseCase
 import kotlinx.coroutines.launch
@@ -19,6 +22,7 @@ class MainViewModel(database: AppDatabase) : ViewModel() {
 
     private val getAllGamesUseCase = GetAllGamesUseCase(repository)
     private val getAllUsersUseCase = GetAllUsersUseCase(repository)
+    private val addUserUseCase = AddUserUseCase(repository)
     private val addGameUseCase = AddGameUseCase(repository)
 
     private val _shouldCloseModal = MutableLiveData<Unit>()
@@ -29,6 +33,9 @@ class MainViewModel(database: AppDatabase) : ViewModel() {
 
     val usersList = getAllUsersUseCase.invoke()
 
+    fun addUser(user: User){
+        addUserUseCase.invoke(user)
+    }
     fun addCreateGame(inputTarget: String?) {
         viewModelScope.launch {
             val target = parseTarget(inputTarget)

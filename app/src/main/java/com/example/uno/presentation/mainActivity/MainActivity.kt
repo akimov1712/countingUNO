@@ -1,11 +1,9 @@
 package com.example.uno.presentation.mainActivity
 
-import MainViewModel
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -14,14 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.uno.R
 import com.example.uno.data.AppDatabase
 import com.example.uno.databinding.ActivityMainBinding
-import com.example.uno.presentation.scoreTableActivity.ModalDeleteColumn
 import com.example.uno.presentation.scoreTableActivity.ScoreActivity
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var modalDeleteColumn: ModalDeleteColumn
 
     private lateinit var etTarget: EditText
     private lateinit var btnDone: Button
@@ -36,12 +32,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        modalDeleteColumn = ModalDeleteColumn()
         initModalCreateGame()
         setupRecyclerView()
         initViewModel()
-        modalDeleteColumn.createLayout(this,layoutInflater)
-
     }
 
     private fun initModalCreateGame() {
@@ -87,9 +80,6 @@ class MainActivity : AppCompatActivity() {
             binding.tvCountGames.text = it.size.toString()
             binding.rvGames.post {
                 binding.rvGames.smoothScrollToPosition(0)
-            }
-            for (item in it){
-                Log.d("sis", item.toString())
             }
         }
         viewModel.shouldCloseModal.observe(this) {
