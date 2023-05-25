@@ -21,31 +21,71 @@
     <ImageView
         android:id="@+id/btn_add_one"
         android:src="@drawable/card_one"
-        android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:layout_width="70dp"
+        android:layout_height="100dp"/>
+
+    <TextView
+        android:id="@+id/tv_count_add_one"
+        android:layout_marginEnd="10dp"
+        android:gravity="bottom"
+        android:text="0"
+        android:textColor="@color/text_grey_dark"
+        android:fontFamily="@font/nunito_semibold"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
         android:layout_height="100dp"/>
 
     <ImageView
         android:id="@+id/btn_add_two"
         android:src="@drawable/card_two"
         android:layout_width="70dp"
-        android:layout_marginEnd="10dp"
         android:layout_height="100dp"/>
+
+        <TextView
+            android:id="@+id/tv_count_add_two"
+            android:layout_marginEnd="10dp"
+            android:gravity="bottom"
+            android:text="0"
+            android:textColor="@color/text_grey_dark"
+            android:fontFamily="@font/nunito_semibold"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"/>
 
     <ImageView
         android:id="@+id/btn_add_three"
         android:src="@drawable/card_three"
-        android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:layout_width="70dp"
         android:layout_height="100dp"/>
 
+        <TextView
+            android:id="@+id/tv_count_add_three"
+            android:layout_marginEnd="10dp"
+            android:gravity="bottom"
+            android:text="0"
+            android:textColor="@color/text_grey_dark"
+            android:fontFamily="@font/nunito_semibold"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"/>
+
     <ImageView
         android:id="@+id/btn_add_four"
         android:src="@drawable/card_four"
-        android:layout_marginEnd="10dp"
         android:layout_width="70dp"
+        android:layout_height="100dp"/>
+
+    <TextView
+        android:id="@+id/tv_count_add_four"
+        android:layout_marginEnd="10dp"
+        android:gravity="bottom"
+        android:text="0"
+        android:textColor="@color/text_grey_dark"
+        android:fontFamily="@font/nunito_semibold"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
         android:layout_height="100dp"/>
 
     <ImageView
@@ -53,7 +93,17 @@
         android:id="@+id/btn_add_five"
         android:src="@drawable/card_five"
         android:layout_width="70dp"
+        android:layout_height="100dp"/>
+
+        <TextView
+        android:id="@+id/tv_count_add_five"
         android:layout_marginEnd="10dp"
+        android:gravity="bottom"
+        android:text="0"
+        android:textColor="@color/text_grey_dark"
+        android:fontFamily="@font/nunito_semibold"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
         android:layout_height="100dp"/>
 
     <ImageView
@@ -61,40 +111,82 @@
         android:src="@drawable/card_six"
         android:layout_marginBottom="10dp"
         android:layout_width="70dp"
-        android:layout_marginEnd="10dp"
         android:layout_height="100dp"/>
+        <TextView
+        android:id="@+id/tv_count_add_six"
+        android:layout_marginEnd="10dp"
+        android:gravity="bottom"
+        android:text="0"
+        android:textColor="@color/text_grey_dark"
+        android:fontFamily="@font/nunito_semibold"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"/>
+
     <ImageView
         android:id="@+id/btn_add_seven"
         android:src="@drawable/card_seven"
         android:layout_marginBottom="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_width="70dp"
         android:layout_height="100dp"/>
-
+<TextView
+        android:id="@+id/tv_count_add_seven"
+        android:layout_marginEnd="10dp"
+        android:gravity="bottom"
+        android:text="0"
+        android:textColor="@color/text_grey_dark"
+        android:fontFamily="@font/nunito_semibold"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"/>
     <ImageView
         android:id="@+id/btn_add_eight"
         android:src="@drawable/card_eight"
         android:layout_marginBottom="10dp"
         android:layout_width="70dp"
-        android:layout_marginEnd="10dp"
         android:layout_height="100dp"/>
-
+<TextView
+        android:id="@+id/tv_count_add_eight"
+        android:layout_marginEnd="10dp"
+        android:gravity="bottom"
+        android:text="0"
+        android:textColor="@color/text_grey_dark"
+        android:fontFamily="@font/nunito_semibold"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"/>
     <ImageView
         android:id="@+id/btn_add_nine"
         android:src="@drawable/card_nine"
         android:layout_marginBottom="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_width="70dp"
         android:layout_height="100dp"/>
-
+<TextView
+        android:id="@+id/tv_count_add_nine"
+        android:layout_marginEnd="10dp"
+        android:gravity="bottom"
+        android:text="0"
+        android:textColor="@color/text_grey_dark"
+        android:fontFamily="@font/nunito_semibold"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"/>
     <ImageView
         android:id="@+id/btn_add_super"
         android:src="@drawable/card_super"
         android:layout_marginBottom="10dp"
         android:layout_width="70dp"
-        android:layout_marginEnd="10dp"
             android:layout_height="100dp"/>
-
+<TextView
+        android:id="@+id/tv_count_add_super"
+        android:layout_marginEnd="10dp"
+        android:gravity="bottom"
+        android:text="0"
+        android:textColor="@color/text_grey_dark"
+        android:fontFamily="@font/nunito_semibold"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"/>
     </com.google.android.flexbox.FlexboxLayout>
 
 

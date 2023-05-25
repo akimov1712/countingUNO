@@ -42,14 +42,20 @@ class AddActivity : AppCompatActivity() {
         binding.btnAddOne.apply {
             setOnClickListener {
                 var countScore = binding.tvCountScore.text.toString().toInt()
+                var countAddScore = binding.tvCountAddOne.text.toString().toInt()
                 countScore += 1
+                countAddScore += 1
                 binding.tvCountScore.text = countScore.toString()
+                binding.tvCountAddOne.text = countAddScore.toString()
             }
             setOnLongClickListener {
                 var countScore = binding.tvCountScore.text.toString().toInt()
-                if (countScore > 0) {
+                var countAddScore = binding.tvCountAddOne.text.toString().toInt()
+                if (countScore > 0 && countAddScore != 0) {
                     countScore -= 1
+                    countAddScore -= 1
                     binding.tvCountScore.text = countScore.toString()
+                    binding.tvCountAddOne.text = countAddScore.toString()
                 }
                 true
             }
@@ -58,14 +64,20 @@ class AddActivity : AppCompatActivity() {
         binding.btnAddTwo.apply {
             setOnClickListener {
                 var countScore = binding.tvCountScore.text.toString().toInt()
+                var countAddScore = binding.tvCountAddTwo.text.toString().toInt()
                 countScore += 2
+                countAddScore += 1
                 binding.tvCountScore.text = countScore.toString()
+                binding.tvCountAddTwo.text = countAddScore.toString()
             }
             setOnLongClickListener {
                 var countScore = binding.tvCountScore.text.toString().toInt()
-                if (countScore > 1) {
+                var countAddScore = binding.tvCountAddTwo.text.toString().toInt()
+                if (countScore > 1&& countAddScore != 0) {
                     countScore -= 2
+                    countAddScore -= 1
                     binding.tvCountScore.text = countScore.toString()
+                    binding.tvCountAddTwo.text = countAddScore.toString()
                 }
                 true
             }
@@ -74,14 +86,20 @@ class AddActivity : AppCompatActivity() {
         binding.btnAddThree.apply {
             setOnClickListener {
                 var countScore = binding.tvCountScore.text.toString().toInt()
+                var countAddScore = binding.tvCountAddThree.text.toString().toInt()
                 countScore += 3
+                countAddScore += 1
                 binding.tvCountScore.text = countScore.toString()
+                binding.tvCountAddThree.text = countAddScore.toString()
             }
             setOnLongClickListener {
                 var countScore = binding.tvCountScore.text.toString().toInt()
-                if (countScore > 2) {
+                var countAddScore = binding.tvCountAddThree.text.toString().toInt()
+                if (countScore > 2&& countAddScore != 0) {
                     countScore -= 3
+                    countAddScore -= 1
                     binding.tvCountScore.text = countScore.toString()
+                    binding.tvCountAddThree.text = countAddScore.toString()
                 }
                 true
             }
@@ -90,14 +108,20 @@ class AddActivity : AppCompatActivity() {
         binding.btnAddFour.apply {
             setOnClickListener {
                 var countScore = binding.tvCountScore.text.toString().toInt()
+                var countAddScore = binding.tvCountAddFour.text.toString().toInt()
                 countScore += 4
+                countAddScore += 1
                 binding.tvCountScore.text = countScore.toString()
+                binding.tvCountAddFour.text = countAddScore.toString()
             }
             setOnLongClickListener {
                 var countScore = binding.tvCountScore.text.toString().toInt()
-                if (countScore > 3) {
+                var countAddScore = binding.tvCountAddFour.text.toString().toInt()
+                if (countScore > 3&& countAddScore != 0) {
                     countScore -= 4
+                    countAddScore -= 1
                     binding.tvCountScore.text = countScore.toString()
+                    binding.tvCountAddFour.text = countAddScore.toString()
                 }
                 true
             }
@@ -106,14 +130,20 @@ class AddActivity : AppCompatActivity() {
         binding.btnAddFive.apply {
             setOnClickListener {
                 var countScore = binding.tvCountScore.text.toString().toInt()
+                var countAddScore = binding.tvCountAddFive.text.toString().toInt()
                 countScore += 5
+                countAddScore += 1
                 binding.tvCountScore.text = countScore.toString()
+                binding.tvCountAddFive.text = countAddScore.toString()
             }
             setOnLongClickListener {
                 var countScore = binding.tvCountScore.text.toString().toInt()
-                if (countScore > 4) {
+                var countAddScore = binding.tvCountAddFive.text.toString().toInt()
+                if (countScore > 4&& countAddScore != 0) {
                     countScore -= 5
+                    countAddScore -= 1
                     binding.tvCountScore.text = countScore.toString()
+                    binding.tvCountAddFive.text = countAddScore.toString()
                 }
                 true
             }
@@ -122,14 +152,20 @@ class AddActivity : AppCompatActivity() {
         binding.btnAddSix.apply {
             setOnClickListener {
                 var countScore = binding.tvCountScore.text.toString().toInt()
+                var countAddScore = binding.tvCountAddSix.text.toString().toInt()
                 countScore += 6
+                countAddScore += 1
                 binding.tvCountScore.text = countScore.toString()
+                binding.tvCountAddSix.text = countAddScore.toString()
             }
             setOnLongClickListener {
                 var countScore = binding.tvCountScore.text.toString().toInt()
-                if (countScore > 5) {
+                var countAddScore = binding.tvCountAddSix.text.toString().toInt()
+                if (countScore > 5&& countAddScore != 0) {
                     countScore -= 6
+                    countAddScore -= 1
                     binding.tvCountScore.text = countScore.toString()
+                    binding.tvCountAddSix.text = countAddScore.toString()
                 }
                 true
             }
@@ -138,14 +174,20 @@ class AddActivity : AppCompatActivity() {
             binding.btnAddSeven.apply {
                 setOnClickListener {
                     var countScore = binding.tvCountScore.text.toString().toInt()
+                    var countAddScore = binding.tvCountAddSeven.text.toString().toInt()
                     countScore += 7
+                    countAddScore += 1
                     binding.tvCountScore.text = countScore.toString()
+                    binding.tvCountAddSeven.text = countAddScore.toString()
                 }
                 setOnLongClickListener {
                     var countScore = binding.tvCountScore.text.toString().toInt()
-                    if (countScore > 6) {
+                    var countAddScore = binding.tvCountAddSeven.text.toString().toInt()
+                    if (countScore > 6&& countAddScore != 0) {
                         countScore -= 7
+                        countAddScore -= 1
                         binding.tvCountScore.text = countScore.toString()
+                        binding.tvCountAddSeven.text = countAddScore.toString()
                     }
                     true
                 }
@@ -154,14 +196,20 @@ class AddActivity : AppCompatActivity() {
             binding.btnAddEight.apply {
                 setOnClickListener {
                     var countScore = binding.tvCountScore.text.toString().toInt()
-                    countScore += 8
+                    var countAddScore = binding.tvCountAddEight.text.toString().toInt()
+                    countScore += 9
+                    countAddScore += 1
                     binding.tvCountScore.text = countScore.toString()
+                    binding.tvCountAddEight.text = countAddScore.toString()
                 }
                 setOnLongClickListener {
                     var countScore = binding.tvCountScore.text.toString().toInt()
-                    if (countScore > 7) {
+                    var countAddScore = binding.tvCountAddEight.text.toString().toInt()
+                    if (countScore > 7 && countAddScore != 0) {
                         countScore -= 8
+                        countAddScore -= 1
                         binding.tvCountScore.text = countScore.toString()
+                        binding.tvCountAddEight.text = countAddScore.toString()
                     }
                     true
                 }
@@ -170,14 +218,20 @@ class AddActivity : AppCompatActivity() {
             binding.btnAddNine.apply {
                 setOnClickListener {
                     var countScore = binding.tvCountScore.text.toString().toInt()
+                    var countAddScore = binding.tvCountAddNine.text.toString().toInt()
                     countScore += 9
+                    countAddScore += 1
                     binding.tvCountScore.text = countScore.toString()
+                    binding.tvCountAddNine.text = countAddScore.toString()
                 }
                 setOnLongClickListener {
                     var countScore = binding.tvCountScore.text.toString().toInt()
-                    if (countScore > 8) {
+                    var countAddScore = binding.tvCountAddNine.text.toString().toInt()
+                    if (countScore > 8&& countAddScore != 0) {
                         countScore -= 9
+                        countAddScore -= 1
                         binding.tvCountScore.text = countScore.toString()
+                        binding.tvCountAddNine.text = countAddScore.toString()
                     }
                     true
                 }
@@ -186,14 +240,20 @@ class AddActivity : AppCompatActivity() {
             binding.btnAddSuper.apply {
                 setOnClickListener {
                     var countScore = binding.tvCountScore.text.toString().toInt()
+                    var countAddScore = binding.tvCountAddSuper.text.toString().toInt()
                     countScore += 20
+                    countAddScore += 1
                     binding.tvCountScore.text = countScore.toString()
+                    binding.tvCountAddSuper.text = countAddScore.toString()
                 }
                 setOnLongClickListener {
                     var countScore = binding.tvCountScore.text.toString().toInt()
-                    if (countScore > 9) {
+                    var countAddScore = binding.tvCountAddSuper.text.toString().toInt()
+                    if (countScore > 19&& countAddScore != 0) {
                         countScore -= 20
+                        countAddScore -= 1
                         binding.tvCountScore.text = countScore.toString()
+                        binding.tvCountAddSuper.text = countAddScore.toString()
                     }
                     true
                 }
