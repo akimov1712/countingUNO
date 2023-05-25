@@ -14,7 +14,7 @@ class ToastFinishGame {
 
         private var isPlaying = false
         private val handler = Handler()
-        private val delayInMillis: Long = 8000
+        private const val DELAY_IN_MILLIS: Long = 8000
 
         var song: MediaPlayer? = null
 
@@ -35,7 +35,7 @@ class ToastFinishGame {
                 toast.show()
                 handler.postDelayed({
                     onMelodyCompletion()
-                }, delayInMillis)
+                }, DELAY_IN_MILLIS)
             }
         }
 
