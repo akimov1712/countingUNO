@@ -66,6 +66,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
+
         database = AppDatabase.getInstance(this)
         viewModel = ViewModelProvider(this, MainViewModelFactory(database))[MainViewModel::class.java]
         observeViewModel()

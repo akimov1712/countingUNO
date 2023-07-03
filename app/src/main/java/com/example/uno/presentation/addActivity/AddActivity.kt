@@ -37,7 +37,22 @@ class AddActivity : AppCompatActivity() {
 
     private fun initAddScoreListener() {
         binding.tvCountScore.setOnClickListener {
-            binding.tvCountScore.text = "0"
+            val textViews = arrayOf(
+                binding.tvCountScore,
+                binding.tvCountAddOne,
+                binding.tvCountAddTwo,
+                binding.tvCountAddThree,
+                binding.tvCountAddFour,
+                binding.tvCountAddFive,
+                binding.tvCountAddSix,
+                binding.tvCountAddSeven,
+                binding.tvCountAddEight,
+                binding.tvCountAddNine,
+                binding.tvCountAddSuper,
+            )
+            for (textView in textViews) {
+                textView.text = "0"
+            }
         }
         binding.btnAddOne.apply {
             setOnClickListener {
@@ -197,7 +212,7 @@ class AddActivity : AppCompatActivity() {
                 setOnClickListener {
                     var countScore = binding.tvCountScore.text.toString().toInt()
                     var countAddScore = binding.tvCountAddEight.text.toString().toInt()
-                    countScore += 9
+                    countScore += 8
                     countAddScore += 1
                     binding.tvCountScore.text = countScore.toString()
                     binding.tvCountAddEight.text = countAddScore.toString()
